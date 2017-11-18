@@ -12,6 +12,7 @@
         <module>cloud-simple-helloword</module>
         <module>cloud-simple-service</module>
         <module>cloud-config-server</module>
+        <module>cloud-eureka-server</module>
     </modules>
 
 
