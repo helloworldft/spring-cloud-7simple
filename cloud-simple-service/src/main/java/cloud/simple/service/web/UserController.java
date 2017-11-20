@@ -17,7 +17,7 @@ public class UserController {
 	//@Value("${spring.redis.host}")
 	private String redisHost;
 
-	//@Value("${my.name}")
+	@Value("${businessConfig.name}")
 	private String name;
 
 	@Autowired
@@ -29,7 +29,7 @@ public class UserController {
 	@RequestMapping(value="/user",method=RequestMethod.GET)
 	public List<User> readUserInfo(){
 		System.out.println("host is "+ redisHost);
-		System.out.println("my name is  "+ name);
+		System.out.println("business config name is  "+ name);
 		List<User> ls=userService.searchAll();
 		return ls;
 	}
