@@ -22,4 +22,17 @@ profile表示对于的环境，即dev；label是可选参数，表示Git分支�
 /{application}-{profile}.properties
 /{label}/{application}-{profile}.properties
 
+# 动态刷新-手动【只需要客户端配置】
+需要客户端主动调用POST请求/refresh方法就可以刷新配置内容
 
+1.让客户端支持/refresh方法：在pom.xml中添加以下依赖。spring-boot-starter-actuator是一套监控的功能，可以监控程序在运行时状态，其中就包括/refresh的功能
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+2.开启refresh机制， 需要给加载变量的类上面加载@RefreshScope注解，其它代码可不做任何改变，那么在客户端执行/refresh的时候就会更新此类下面的变量值
+3.用postman发送【POST】如项目中的cloud-simple-service请求：http://localhost:8082/refesh
+
+注意：
+1.对于spring.profiles.active=native的配置，需要修改了参数后，重启配置中心服务，再调用POST请求/refresh方法就可以刷新配置内容
+2.配置必须放在配置中心或者git,svn上，如果放在本地服务上，则不会生效

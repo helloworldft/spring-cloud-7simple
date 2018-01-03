@@ -22,6 +22,9 @@ public class UserController {
 	@Value("${businessConfig.name}")
 	private String name;
 
+	@Value("${businessConfig.age}")
+	private Integer age;
+
 	@Autowired
 	UserService userService;
 
@@ -32,6 +35,7 @@ public class UserController {
 	public List<User> readUserInfo(){
 		System.out.println("host is "+ redisHost);
 		System.out.println("business config name is  "+ name);
+		System.out.println("business config age is  "+ age);
 		List<User> ls=userService.searchAll();
 		return ls;
 	}
