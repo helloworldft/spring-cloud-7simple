@@ -36,3 +36,5 @@ profile表示对于的环境，即dev；label是可选参数，表示Git分支�
 注意：
 1.对于spring.profiles.active=native的配置，需要修改了参数后，重启配置中心服务，再调用POST请求/refresh方法就可以刷新配置内容
 2.配置必须放在配置中心或者git,svn上，如果放在本地服务上，则不会生效
+
+# 动态刷新-手动【spring-cloud-starter-bus-amqp】
