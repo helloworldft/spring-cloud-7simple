@@ -38,6 +38,8 @@ profile表示对于的环境，即dev；label是可选参数，表示Git分支�
 2.配置必须放在配置中心或者git,svn上，如果放在本地服务上，则不会生效
 
 # 动态刷新-手动【spring-cloud-starter-bus-amqp】
+参考：https://www.cnblogs.com/ityouknow/p/6931958.html
+
 1.config服务增加配置cloud-config-server：
   pom.xml增加依赖：
         <!--消息总线-->
