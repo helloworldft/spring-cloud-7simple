@@ -38,3 +38,33 @@ profile表示对于的环境，即dev；label是可选参数，表示Git分支�
 2.配置必须放在配置中心或者git,svn上，如果放在本地服务上，则不会生效
 
 # 动态刷新-手动【spring-cloud-starter-bus-amqp】
+1.config服务增加配置cloud-config-server：
+  pom.xml增加依赖：
+        <!--消息总线-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
+        <!--config-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-monitor</artifactId>
+        </dependency>
+  application.properties增加：      
+        management.security.enabled=false
+        
+        spring.rabbitmq.host=localhost
+        spring.rabbitmq.port=5672
+        spring.rabbitmq.username=guest
+        spring.rabbitmq.password=guest
+        
+2.客户端服务增加配置cloud-simple-service：
+  pom.xml增加依赖：
+          <!--消息总线-->
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+          </dependency>
+3.开启refresh机制， 需要给加载变量的类上面加载@RefreshScope注解，其它代码可不做任何改变  
+4.用postman发送【POST】注意是向conf服务发送请求：http://localhost:8888/bus/refresh
+  这样就能刷新所有的客户服务的配置
