@@ -14,7 +14,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 /*
  * @author ft
  */
-@RefreshScope
+//@RefreshScope
 @EnableDiscoveryClient
 @SpringBootApplication
 public class SimpleService {
