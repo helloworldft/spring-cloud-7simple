@@ -23,7 +23,7 @@ public class DatabasesEnvironmentRepository implements EnvironmentRepository {
             return null;
         ConfigRepository configRepositories = configRepositoryService.findByApplicationAndProfileAndLabel(application, profile, label);
         if (configRepositories != null) {
-            Environment environment = new Environment(application, StringUtils.commaDelimitedListToStringArray(profile), label, configRepositories.getVersion());
+            Environment environment = new Environment(application, StringUtils.commaDelimitedListToStringArray(profile), label, configRepositories.getVersion(),null);
             for (ConfigProperties configProperties : configRepositories.getConfigPropertiesList()) {
                 environment.add(new PropertySource(configProperties.getPropertiesName(), configProperties.getContent()));
             }

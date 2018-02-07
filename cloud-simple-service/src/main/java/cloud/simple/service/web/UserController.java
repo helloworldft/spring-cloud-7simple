@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RefreshScope
 public class UserController {
 
 	//@Value("${spring.redis.host}")
